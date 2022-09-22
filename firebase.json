@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "royal-shop",
+    "public": "dist/royal-shoping",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

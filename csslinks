@@ -1,0 +1,60 @@
+  "./src/lib/css/base/_reset.scss",
+              "./src/lib/css/base/_typography.scss",
+
+
+              "./src/lib/css/components/_alert.scss",
+              "./src/lib/css/components/_breadscrumb.scss",
+              "./src/lib/css/components/_button.scss",
+              "./src/lib/css/components/_cookie_bar.scss",
+              "./src/lib/css/components/_counter.scss",
+              "./src/lib/css/components/_form.scss",
+              "./src/lib/css/components/_label.scss",
+              "./src/lib/css/components/_lazyload.scss",
+              "./src/lib/css/components/_loader.scss",
+              "./src/lib/css/components/_modal.scss",
+              "./src/lib/css/components/_nav-tabs.scss",
+              "./src/lib/css/components/_pagination.scss",
+              "./src/lib/css/components/_ratio.scss",
+              "./src/lib/css/components/_slider.scss",
+              "./src/lib/css/components/_tab.scss",
+              "./src/lib/css/components/_tap-to-top.scss",
+              "./src/lib/css/components/_theme-setting.scss",
+              "./src/lib/css/components/_timer.scss",
+              "./src/lib/css/components/_tooltip.scss",
+
+
+              "./src/lib/css/layout/_banner.scss",
+              "./src/lib/css/layout/_blog.scss",
+              "./src/lib/css/layout/_category.scss",
+              "./src/lib/css/layout/_footer.scss",
+              "./src/lib/css/layout/_home.scss",
+              "./src/lib/css/layout/_item.scss",
+              "./src/lib/css/layout/_nav.scss",
+              "./src/lib/css/layout/_newsletter.scss",
+              "./src/lib/css/layout/_offer.scss",
+              "./src/lib/css/layout/_product.scss",
+              "./src/lib/css/layout/_review.scss",
+              "./src/lib/css/layout/_service.scss",
+
+
+              "./src/lib/css/pages/_coming-soon.scss",
+              "./src/lib/css/pages/_inner_pages.scss",
+              "./src/lib/css/pages/_product_page.scss",
+              "./src/lib/css/pages/_shop_page.scss",
+
+
+
+
+              "./src/lib/css/themes/_rtl.scss",
+
+
+              "./src/lib/css/utils/_variables.scss",
+              "./src/lib/css/utils/mixin/_animation.scss",
+              "./src/lib/css/utils/mixin/_breakpoints.scss",
+              "./src/lib/css/utils/mixin/_common.scss",
+
+              "./src/lib/css/vendors/bootstrap.css",
+              "./src/lib/css/vendors/feather-icon.css",
+              "./src/lib/css/vendors/font-awesome.css",
+              "./src/lib/css/vendors/slick/slick.css",
+              "./src/lib/css/vendors/slick/slick-theme.css"
