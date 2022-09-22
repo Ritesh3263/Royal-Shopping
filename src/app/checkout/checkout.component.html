@@ -1,0 +1,308 @@
+<!-- Start Checkout Area -->
+<section class="wn__checkout__area section-padding--lg bg__white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="wn_checkout_wrap">
+
+          <div class="checkout_info">
+            <span>Have a coupon? </span>
+            <a class="showcoupon" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+              aria-controls="collapseExample">Click here to enter your code</a>
+          </div>
+
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body m-2">
+              <form>
+                <div class="form-row">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Coupon code">
+                  </div>
+                  <div class="col">
+                    <button type="button" class="btn btn-dark">Apply coupon</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-12">
+        <div class="customer_details">
+          <h3>Billing details</h3>
+          <div class="customar__field">
+            <article class="card">
+              <div class="card-body p-5">
+                <form [formGroup]="addForm" (ngSubmit)="submitForm()" role="form">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>First name <span class="required"> * </span></label>
+                        <input [formControl]="addForm.controls['first_name']" type="text" class="form-control"
+                          required="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Last name <span class="required"> * </span></label>
+                        <input [formControl]="addForm.controls['last_name']" type="text" class="form-control"
+                          required="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Country <span class="required"> * </span></label>
+                        <input [formControl]="addForm.controls['country']" type="text" class="form-control" required="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>State <span class="required"> * </span></label>
+                        <input [formControl]="addForm.controls['state']" type="text" class="form-control" required="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>District <span class="required"> * </span></label>
+                        <input [formControl]="addForm.controls['district']" type="text" class="form-control"
+                          required="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Postcode / ZIP <span class="required"> * </span></label>
+                        <input [formControl]="addForm.controls['pincode']" number type="text" class="form-control"
+                          required="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm">
+                      <div class="form-group">
+                        <label>Address <span class="required"> * </span></label>
+                        <textarea rows="3" [formControl]="addForm.controls['address']" type="text"
+                          class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Phone <span class="required"> * </span></label>
+                        <input number [formControl]="addForm.controls['phone_number']" type="text" class="form-control"
+                          required="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Email <span class="required"> * </span></label>
+                        <input [formControl]="addForm.controls['email']" type="text" class="form-control" required="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <button style="background-color: #f0680c; color: white;" class="btn byn-large btn-block"
+                    type="submit"> Place
+                    Order </button>
+
+
+                  <!-- <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+                        <i class="fa fa-credit-card"></i> Credit Card</a></li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                        <i class="fa fa-paypal"></i> Paypal</a></li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+                        <i class="fa fa-university"></i> Bank Transfer</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane fade show active" id="nav-tab-card">
+                      <p class="alert alert-success">Some text success or error</p>
+
+                      <div class="form-group">
+                        <label for="username">Full name (on the card)</label>
+                        <input type="text" [formControl]="addForm.controls['full_name_card']" class="form-control"
+                          name="username" placeholder="" required="">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="cardNumber">Card number</label>
+                        <div class="input-group">
+                          <input type="text" (input)="GetCardType()" number
+                            [formControl]="addForm.controls['card_number']" class="form-control" name="cardNumber"
+                            placeholder="">
+                          <div class="input-group-append">
+                            <span class="input-group-text text-muted">
+                              <i class="fa fa-cc-visa"></i>   <i class="fa fa-cc-amex"></i>  
+                              <i class="fa fa-cc-mastercard"></i>
+                            </span>
+                          </div>
+                        </div>
+                        <span *ngIf="cardType!='false'" style="color: yellowgreen;">{{cardType}}</span>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <div class="form-group">
+                            <label><span class="hidden-xs">Expiration</span> </label>
+                            <div class="input-group">
+                              <input type="text" number [formControl]="addForm.controls['ex_mm']" class="form-control"
+                                placeholder="MM">
+                              <input type="text" number [formControl]="addForm.controls['ex_yy']" class="form-control"
+                                placeholder="YY">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-group">
+                            <label data-toggle="tooltip" title=""
+                              data-original-title="3 digits code on back side of the card">CVV <i
+                                class="fa fa-question-circle"></i></label>
+                            <input [formControl]="addForm.controls['cvv']" number type="number" class="form-control"
+                              required="">
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-tab-paypal">
+                      <p>Paypal is easiest way to pay online</p>
+                      <p>
+                        <a type="button" target="_blank" href="http://www.paypal.com/login" class="btn btn-primary"> <i
+                            class="fa fa-paypal"></i> Log in my Paypal </a>
+                      </p>
+                      <p><strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-tab-bank">
+                      <p>Bank accaunt details</p>
+                      <dl class="param">
+                        <dt>BANK: </dt>
+                        <dd> THE WORLD BANK</dd>
+                      </dl>
+                      <dl class="param">
+                        <dt>Accaunt number: </dt>
+                        <dd> 12345678912345</dd>
+                      </dl>
+                      <dl class="param">
+                        <dt>IBAN: </dt>
+                        <dd> 123456789</dd>
+                      </dl>
+                      <p><strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                  </div> -->
+                </form>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+        <div class="wn__order__box">
+          <h3 class="onder__title">Your order</h3>
+          <ul class="order__total">
+            <li>Product</li>
+            <li>Total</li>
+          </ul>
+          <ul class="order_product">
+            <li *ngFor="let item of objectArray">
+              {{item?.product_name}} - {{item?.price}} × {{item?.quantity}}
+              <span>₹ {{item?.total_amount}}</span>
+            </li>
+          </ul>
+          <ul class="shipping__method">
+            <li>Cart Subtotal <span>₹ {{total_amount}}</span></li>
+            <li>Shipping
+              <ul>
+                <li>
+                  <input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked"
+                    type="radio">
+                  <label>Flat Rate: ₹ {{addForm.value.shipping_charges}}</label>
+                </li>
+                <li>
+                  <input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked"
+                    type="radio">
+                  <label>Flat Rate: ₹ {{addForm.value.shipping_charges}}</label>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="total__amount">
+            <li>Order Total <span>₹ {{total_amount+ addForm.value.shipping_charges}}</span></li>
+          </ul>
+        </div>
+        <div id="accordion" class="checkout_accordion mt--30" role="tablist">
+          <div class="payment">
+            <div class="che__header" role="tab" id="headingOne">
+              <a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                aria-controls="collapseOne">
+                <span>Direct Bank Transfer</span>
+              </a>
+            </div>
+            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+              data-parent="#accordion">
+              <div class="payment-body">Make your payment directly into our bank account. Please use your Order ID as
+                the payment reference. Your order won’t be shipped until the funds have cleared in our account.</div>
+            </div>
+          </div>
+          <div class="payment">
+            <div class="che__header" role="tab" id="headingTwo">
+              <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                aria-controls="collapseTwo">
+                <span>Cheque Payment</span>
+              </a>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+              data-parent="#accordion">
+              <div class="payment-body">Please send your cheque to Store Name, Store Street, Store Town, Store State /
+                County, Store Postcode.</div>
+            </div>
+          </div>
+          <div class="payment">
+            <div class="che__header" role="tab" id="headingThree">
+              <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
+                aria-controls="collapseThree">
+                <span>Cash on Delivery</span>
+              </a>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
+              data-parent="#accordion">
+              <div class="payment-body">Pay with cash upon delivery.</div>
+            </div>
+          </div>
+          <div class="payment">
+            <div class="che__header" role="tab" id="headingFour">
+              <a class="collapsed checkout__title" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
+                aria-controls="collapseFour">
+                <span>PayPal <img src="assets/images/icons/payment.png" alt="payment images"> </span>
+              </a>
+            </div>
+            <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
+              data-parent="#accordion">
+              <div class="payment-body">Pay with cash upon delivery.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- End Checkout Area -->
+<style>
+  .required {
+    color: red;
+  }
+</style>
+
+<!-- Razopay -->

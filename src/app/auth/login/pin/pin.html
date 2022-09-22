@@ -1,0 +1,89 @@
+<div class="container">
+    <!-- *ngIf="loginPinType == 1" -->
+    <form  class="sign-in-form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <div class="card">
+            <div class="card-body">
+                <div class="brand text-center d-block m-b-30 m-t-20">
+                    <img src="assets/logo-login.svg" alt="DigiPayWallet Logo" style="width: 150px">
+                </div>
+                <h1 class="sign-in-heading text-center">Let's Get Started ( get mobile no)</h1>
+                <p class="text-center text-muted">Hi! Please enter your login information below to send submissions as contacts.</p>
+                <p class="text-center m-b-20">
+                    <a style="color:#399AF2" class="" (click)="changeLoginType('email')">Login with email?</a>
+                </p>
+                <div *ngIf="formErrors.apierror" class="alert alert-danger alert-dismissible">
+                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span [innerHTML]="formErrors.apierror"> </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="sr-only">Phone Number</label>
+                    <div class="input-group" [ngClass]="{'has-error': formErrors.phone_number}">
+                        <span class="input-group-addon">{{currentCompany?.dial_code}}</span>
+                        <input number type="text" class="form-control" [formControl]="loginForm.controls['phone_number']" placeholder="Enter Phone Number" />
+                    </div>
+                    <span *ngIf="formErrors.phone_number" class="help-block" [innerHTML]="formErrors.phone_number"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" [ngClass]="{'qt-loader qt-loader-mini qt-loader-left': showLoader}" [disabled]="showLoader">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </form>
+
+<!-- *ngIf="loginPinType == 2" -->
+    <form  class="sign-in-form" [formGroup]="otpForm" (ngSubmit)="submitOtpForm()">
+        <div class="card">
+            <div class="card-body">
+                <div class="brand text-center d-block m-b-30 m-t-20">
+                    <img src="assets/logo-login.svg" alt="DigiPayWallet Logo" style="width: 150px">
+                </div>
+                <h1 class="sign-in-heading text-center">Let's Get Started (verify otp)</h1>
+                <p class="text-center text-muted">Enter OTP</p>
+                <div *ngIf="formErrors.apierror" class="alert alert-danger alert-dismissible">
+                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span [innerHTML]="formErrors.apierror"> </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="sr-only">OTP</label>
+                    <input number type="text" class="form-control" [formControl]="otpForm.controls['otp']" placeholder="Enter OTP" />
+                    <span *ngIf="formErrors.otp" class="help-block" [innerHTML]="formErrors.otp"></span>
+                </div>
+                <div class="checkbox m-b-10 m-t-20 ">
+                    <a (click)="resendOTP()" class="float-right m-b-20">Resend OTP?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" [ngClass]="{'qt-loader qt-loader-mini qt-loader-left': showLoader}" [disabled]="showLoader">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!--  -->
+    <form *ngIf="loginPinType == 3 || loginPinType == 4" class="sign-in-form" [formGroup]="pinForm" (ngSubmit)="submitPINForm()">
+        <div class="card">
+            <div class="card-body">
+                <div class="brand text-center d-block m-b-30 m-t-20">
+                    <img src="assets/logo-login.svg" alt="DigiPayWallet Logo" style="width: 150px">
+                </div>
+                <h1 class="sign-in-heading text-center">Let's Get Started (3=check pin || 4=set pin)</h1>
+                <p class="text-center text-muted">{{loginPinType == 3 ? 'Enter':'Set new'}} login pin</p>
+                <div *ngIf="formErrors.apierror" class="alert alert-danger alert-dismissible">
+                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span [innerHTML]="formErrors.apierror"> </span>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="sr-only">PIN</label>
+                    <input number type="password" class="form-control" [formControl]="pinForm.controls['login_pin']" placeholder="Enter login pin" />
+                    <span *ngIf="formErrors.login_pin" class="help-block" [innerHTML]="formErrors.login_pin"></span>
+                </div>
+                <div *ngIf="loginPinType == 3" class="checkbox m-b-10 m-t-20 ">
+                    <a (click)="forgotLoginPin()" class="float-right m-b-20">Forgot PIN?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" [ngClass]="{'qt-loader qt-loader-mini qt-loader-left': showLoader}" [disabled]="showLoader">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>

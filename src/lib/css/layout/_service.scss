@@ -1,0 +1,111 @@
+/**=====================
+     Service scss
+==========================**/
+.service-contain {
+    flex-wrap: wrap;
+    padding-bottom: calc(30px + (50 - 30) * ((100vw - 320px) / (1920 - 320)));
+
+  
+
+    .service-box {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+       
+
+      
+
+      
+
+     
+
+        +.service-box {
+            &::before {
+                
+               
+                left: -104px;
+                border: 1px dashed #c1c1c1;
+
+                [dir="rtl"] & {
+                    left: unset;
+                    right: -104px;
+                }
+
+              
+
+             
+
+            
+            }
+        }
+
+        .service-image {
+            img {
+                object-fit: contain;
+            }
+        }
+
+        .service-detail {
+            margin-left: 20px;
+
+            [dir="rtl"] & {
+                margin-left: unset;
+                margin-right: 20px;
+            }
+
+            h5 {
+                font-weight: 500;
+                color: white;
+            }
+        }
+    }
+}
+
+.service-contain-2 {
+    display: flex;
+    align-items: center;
+    padding: calc(14px + (25 - 14) * ((100vw - 320px) / (1920 - 320)));
+    border-radius: 5px;
+    background-color: rgba(#bfbfbf, $alpha: .2);
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: var(--theme-color);
+
+        svg {
+            fill: white;
+        }
+
+        .service-detail {
+
+            h3,
+            h6 {
+                color: white;
+            }
+        }
+    }
+
+    svg {
+        fill: var(--theme-color);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .service-detail {
+        margin-left: 25px;
+        transition: all 0.3s ease-in-out;
+
+        [dir="rtl"] & {
+            margin-left: unset;
+            margin-right: 25px;
+        }
+
+        h3 {
+            letter-spacing: 0.8px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease-in-out;
+            font-weight: 600;
+        }
+    }
+}

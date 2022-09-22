@@ -1,0 +1,94 @@
+<!-- Start Blog Area -->
+<div class="page-blog bg--white section-padding--lg blog-sidebar right-sidebar">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-12">
+        <div class="blog-page">
+          <div class="page__header">
+            <h2>Category Archives: HTML</h2>
+          </div>
+          <!-- Start Single Post -->
+          <article *ngFor="let offeritem of offerList" class="blog__post d-flex flex-wrap">
+            <div class="thumb">
+              <a routerLink="/blog-details">
+                <img [src]="offeritem?.offer_image ? offeritem?.offer_image :'assets/images/blog/blog-3/1.jpg'" alt="blog images">
+              </a>
+            </div>
+            <div class="content">
+              <h4><a routerLink="/blog-details">{{offeritem?.offer_name}}</a></h4>
+              <ul class="post__meta">
+                <li>Posts by : <a href="#">{{getjson(offeritem?.company_id)?.label}}</a></li>
+                <li *ngIf="offeritem?.insert_date" class="post_separator">/</li>
+                <li *ngIf="offeritem?.insert_date">{{offeritem?.insert_date*1000|date }}</li>
+              </ul>
+              <p>{{offeritem?.offer_details}}</p>
+              <div class="blog__btn">
+                <a [href]=offeritem?.offer_url target="_blank">read more</a>
+              </div>
+            </div>
+          </article>
+          <!-- End Single Post -->
+
+
+        </div>
+        <pagination class="m-5" [paginationList]="pagination" [currentPage]="currentPage"
+          (onPageChange)="getPage($event)">
+        </pagination>
+      </div>
+      <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
+        <div class="wn__sidebar">
+          <!-- Start Single Widget -->
+          <aside class="widget search_widget">
+            <h3 class="widget-title">Search</h3>
+            
+              <div class="form-input">
+                <input type="text" #search (keyup.enter)="searchAction(search.value)" placeholder="Search...">
+                <button (click)="searchAction(search.value)"><i class="fa fa-search"></i></button>
+              </div>
+           
+          </aside>
+          <!-- End Single Widget -->
+          <!-- Start Single Widget -->
+          <aside class="widget recent_widget">
+            <h3 class="widget-title">Recent</h3>
+            <div class="recent-posts">
+              <ul>
+                <li *ngFor="let item of productList">
+                  <div class="post-wrapper d-flex">
+                    <div class="thumb">
+                      <a [routerLink]="['//shop-grid',item?.id]" routerLinkActive="router-link-active"><img
+                          [src]="item?.image ? item?.image :'assets/images/blog/sm-img/1.jpg'" alt="blog images"></a>
+                    </div>
+                    <div class="content">
+                      <h4><a [routerLink]="['//shop-grid',item?.id]"
+                          routerLinkActive="router-link-active">{{item?.name}}</a></h4>
+                      <p> {{item?.insert_date*1000 |date}}</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          <!-- End Single Widget -->
+          <aside class="wedget__categories poroduct--tag">
+            <h3 class="wedget__title">Product Category</h3>
+            <ul>
+              <li *ngFor="let catitem of catergoryList; let i=index">
+                <a [routerLink]="['/shop-grid', {c_n:catitem?.label,c_:catitem?.value}]">{{catitem?.label}}</a>
+              </li>
+            </ul>
+          </aside>
+          <aside class="wedget__categories poroduct--tag">
+            <h3 class="wedget__title">Product Brand</h3>
+            <ul>
+              <li *ngFor="let branditem of brandList; let i=index">
+                <a [routerLink]="['/shop-grid', {b_n:branditem?.label,b_:branditem?.value}]">{{branditem?.label}}</a>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Blog Area -->

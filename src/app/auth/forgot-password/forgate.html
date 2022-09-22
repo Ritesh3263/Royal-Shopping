@@ -1,0 +1,30 @@
+<div class="container">
+  <form class="sign-in-form" [formGroup]="forgotForm" (ngSubmit)="submitForm()">
+    <div class="card">
+      <div class="card-body">
+        <div class="brand text-center d-block m-b-30 m-t-20">
+            <img src="assets/logo-login.svg" alt="DigiPayWallet Logo" style="width: 150px">
+        </div>
+        <h1 class="sign-in-heading text-center">Forgotten Password?</h1>
+        <p class="text-center m-b-20 text-muted">Enter your email address below, and we'll email instructions for setting a new one.</p>
+        <div *ngIf="formErrors.success" class="alert alert-success alert-dismissible">
+          <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span [innerHTML]="formErrors.success"> </span>
+        </div>
+        <div *ngIf="formErrors.error" class="alert alert-danger alert-dismissible">
+          <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span [innerHTML]="formErrors.error"> </span>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="sr-only">Email ID</label>
+          <input [formControl]="forgotForm.controls['email']" class="form-control input-lg" type="text" autofocus placeholder="Email ID">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block m-top-24"
+          [ngClass]="{'qt-loader qt-loader-mini qt-loader-left': showLoader}" [disabled]="showLoader">
+          Submit
+        </button>
+        <p class="text-muted m-t-25 m-b-0 p-0 text-center">Remember Password?<a routerLink="/login"> Sign In</a></p>
+      </div>
+    </div>
+  </form>
+</div>

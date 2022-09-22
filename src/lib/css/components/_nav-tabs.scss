@@ -1,0 +1,347 @@
+/**=====================
+     Nav-tabs scss
+==========================**/
+.product-section-box {
+    margin-top: calc(12px + (48 - 12) * ((100vw - 320px) / (1920 - 320)));
+
+    .custom-nav {
+        flex-wrap: nowrap;
+        border: none;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin: 0;
+        border-bottom: 1px solid white;
+
+        .nav-item {
+            .nav-link {
+                color: white;
+                padding: calc(12px + (15 - 12) * ((100vw - 320px) / (1920 - 320))) calc(17px + (30 - 17) * ((100vw - 320px) / (1920 - 320)));
+                font-size: calc(16px + (20 - 16) * ((100vw - 320px) / (1920 - 320)));
+                letter-spacing: 0.6px;
+                border: none;
+                font-weight: 600;
+                background-color: lightgray;
+                position: relative;
+
+                &::after {
+                    
+                   top: 0;
+                    left: 0;
+                    background-color: transparent;
+                    transition: all 0.3s ease-in-out;
+
+                    [dir="rtl"] & {
+                        left: unset;
+                        right: 0;
+                    }
+                }
+
+                &:focus,
+                &:hover,
+                &.active {
+                    background-color: white;
+
+                    &::after {
+                        width: 100%;
+                        background: #1aa488;
+                    }
+                }
+            }
+        }
+    }
+
+    // Offer Table Section
+    .offer-table {
+        margin-bottom: 0;
+        border: 1px solid white;
+        table-layout: fixed;
+        display: inherit;
+        border-radius: 6px;
+
+        [dir="rtl"] & {
+            right: unset;
+            left: 10px;
+        }
+
+        tbody {
+            tr {
+
+                th,
+                td {
+                    padding: 12px 16px;
+                }
+
+                th {
+                    width: 7%;
+                }
+
+                td {
+                    vertical-align: middle;
+
+                    &.offer-name {
+                        width: 20%;
+                    }
+                }
+            }
+        }
+    }
+
+    .custom-tab {
+        padding-top: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 320)));
+
+        .nav-desh {
+            margin-bottom: calc(22px + (30 - 22) * ((100vw - 320px) / (1920 - 320)));
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            .desh-title {
+                margin-bottom: 8px;
+
+                h5 {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .product-detail {
+            .detail-title {
+                h5 {
+                    font-weight: 600;
+                    color: white;
+                    font-size: 17px;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .detail-list {
+              
+                li {
+                    display: flex;
+                    align-items: flex-start;
+                    color: white;
+                    width: 100%;
+
+                    i {
+
+                        font-size: 6px;
+                        color: white;
+                        margin: 6px 6px 0 0;
+                    }
+                }
+            }
+        }
+
+        .tab-pane {
+            .product-description {
+                p {
+                    margin-bottom: calc(12px + (20 - 12) * ((100vw - 320px) / (1920 - 320)));
+                    color: white;
+                    line-height: 1.7;
+                    font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (1920 - 320)));
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .information-box {
+            ul {
+                
+                li {
+                    color: white;
+                    width: 100%;
+                    display: list-item;
+                    list-style-type: circle;
+                    margin-left: 35px;
+                    font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (1920 - 320)));
+                }
+            }
+        }
+
+        .review-box {
+            .review-title {
+                margin-bottom: calc(10px + (18 - 10) * ((100vw - 320px) / (1920 - 320)));
+            }
+
+            .review-people {
+                .review-list {
+                   
+                    [dir="rtl"] & {
+                        padding-right: 0;
+                    }
+
+                    li {
+                        display: block;
+                        width: 100%;
+
+                        .people-box {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            border-radius: 10px;
+                            padding: 20px 26px;
+                            background: lightgray;
+
+
+                            &:hover {
+                                .reply {
+                                    a {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+
+                            .people-image {
+                               
+
+                                img {
+                                   border-radius: 10px;
+                                    object-fit: cover;
+                                    transition: all 0.3s ease-in-out;
+
+                                }
+                            }
+
+                            .people-comment {
+                                padding-left: 15px;
+                                width: calc(100% - 70px);
+
+                                .name {
+                                    display: block;
+                                    font-weight: 600;
+                                    font-size: 15px;
+
+                                    &:hover {
+                                        color: var(--theme-color);
+                                    }
+                                }
+
+                                [dir="rtl"] & {
+                                    padding-left: unset;
+                                    padding-right: 15px;
+                                }
+
+                              
+
+                                .date-time {
+                                   width: 100%;
+
+                                    h6 {
+                                        font-size: 13px;
+                                        color: #777;
+                                        margin-top: 1px;
+                                    }
+
+                                    
+                                }
+                            }
+
+                            .reply {
+                                margin-top: 9px;
+                                line-height: 1.6;
+                                color: white;
+                                position: relative;
+
+                                p {
+                                    width: 90%;
+                                    margin: 0;
+                                    line-height: 1.6;
+
+                                   
+                                }
+
+                                a {
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    opacity: 0;
+                                    font-weight: 600;
+                                    transition: all 0.3s ease-in-out;
+
+                                    [dir="rtl"] & {
+                                        right: unset;
+                                        left: 0;
+                                    }
+
+                                  
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .rating-box {
+                margin-top: 17px;
+
+                ul {
+                    align-items: center;
+
+                    [dir="rtl"] & {
+                        padding-right: 0;
+                    }
+
+                    li {
+                        width: 100%;
+
+                        .rating-list {
+                           align-items: center;
+
+                            h5 {
+                                white-space: nowrap;
+                            }
+
+                            .progress {
+                                width: 100%;
+                                border-radius: 3px;
+
+                                .progress-bar {
+                                    background: var(--theme-color2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .info-table {
+            border: 1px solid white;
+            margin-bottom: 0;
+
+            &.table-striped {
+                tbody {
+                    tr {
+                        &:nth-of-type(odd) {
+                            td {
+                                background-color: lightgray;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+
+                    th,
+                    td {
+                        padding: calc(10px + (14 - 10) * ((100vw - 320px) / (1920 - 320))) calc(12px + (18 - 12) * ((100vw - 320px) / (1920 - 320)));
+                        font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+                        white-space: nowrap;
+                    }
+
+                    td {
+                        border-left: 1px solid white;
+                    }
+                }
+            }
+        }
+    }
+}

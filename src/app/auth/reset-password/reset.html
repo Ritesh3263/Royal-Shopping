@@ -1,0 +1,34 @@
+<div class="container">
+  <form class="sign-in-form" [formGroup]="resetPasswordForm" (ngSubmit)="submitForm()">
+    <div class="card">
+      <div class="card-body">
+        <div class="brand text-center d-block m-b-30 m-t-20">
+          <img src="assets/logo-login.svg" alt="DigiPayWallet Logo" style="width: 150px">
+        </div>
+        <h1 class="sign-in-heading text-center">Forgotten Password?</h1>
+        <p class="text-center m-b-20 text-muted">Enter your email address below, and we'll email instructions for
+          setting a new one.</p>
+        <div *ngIf="formErrors.error" class="alert alert-danger alert-dismissible">
+          <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span [innerHTML]="formErrors.error"> </span>
+        </div>
+        <div *ngIf="formErrors.success" class="alert alert-success alert-dismissible">
+          <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span [innerHTML]="formErrors.success"> </span>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="sr-only">New Password</label>
+          <input type="password" [formControl]="resetPasswordForm.controls['password']" class="form-control input-lg" placeholder="New password">
+        </div>
+        <div class="form-group">
+          <label for="inputconfirmpassword" class="sr-only">Password</label>
+          <input type="password" [formControl]="resetPasswordForm.controls['confirm_password']" class="form-control input-lg" placeholder="Confirm password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block m-top-24" [ngClass]="{'qt-loader qt-loader-mini qt-loader-left': showLoader}"
+          [disabled]="showLoader">
+          Reset Password
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

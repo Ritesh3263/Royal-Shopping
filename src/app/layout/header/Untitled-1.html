@@ -1,0 +1,170 @@
+<header id="wn__header" class="header__area header__absolute sticky__header">
+    <nav class="navbar navbar-expand-lg navbar-light text-primary
+    bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <!-- <img src="assets/images/logo/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+            Royal Shop
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{match:['/home']}">
+                    <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{match:['/shop-grid']}">
+                    <a class="nav-link" routerLink="/shop-grid">Shop</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{match:['/blog']}">
+                    <a class="nav-link" routerLink="/offer">Offres</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{match:['/brand']}">
+                    <a class="nav-link" routerLink="/brand">Brand</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{match:['/order']}">
+                    <a class="nav-link" routerLink="/order">My Order</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{match:['/contact']}">
+                    <a class="nav-link" routerLink="/contact">Customer Care</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{match:['/about']}">
+                    <a class="nav-link" routerLink="/about">About</a>
+                </li>
+
+
+
+                <!-- Example single danger button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Action
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" routerLink="/faq">Notification</a>
+                        <a class="dropdown-item" routerLink="/portfolio-details">Portfolio Details dfdfdsfsd dfdsfd
+                            dfds</a>
+                        <a class="dropdown-item" routerLink="/team">Team</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLink="/blog-details">Blog Details</a>
+                        <a class="dropdown-item" routerLink="/error404">error404</a>
+
+                    </div>
+                </div>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 ">
+                <div class="text-primary">
+                    <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+                        <li class="shop_search">
+                            <a data-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false"
+                                aria-controls="collapseExample" class="search__active"></a>
+                        </li>
+                        <li class="wishlist">
+                            <a routerLink="/wishlist"></a>
+                        </li>
+                        <li *ngIf="currentUser" class="shopcart nav-item dropdown">
+                            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false"><span *ngIf="currentCart?.cart_item"
+                                    class="product_qun">{{currentCart?.cart_item}}</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-accout">
+                                <!-- Start Shopping Cart -->
+                                <div class="minicart-content-wrapper">
+                                    <div class="dropdown-header pb-3">
+                                        <div class="micart__close">
+                                            <span>close</span>
+                                        </div>
+                                        <div class="items-total d-flex justify-content-between">
+                                            <span>{{currentCart?.cart_item}} items</span>
+                                            <span>Cart Subtotal</span>
+                                        </div>
+                                        <div class="total_amount text-right">
+                                            <span>₹ {{currentCart?.total_amount |number}}</span>
+                                        </div>
+                                        <div class="mini_action checkout">
+                                            <a class="checkout__btn" routerLink="/cart">Go to Checkout</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="single__items">
+                                        <div class="miniproduct">
+
+                                            <div class=" dropdown-item item01 d-flex mt--10"
+                                                *ngFor="let item of currentCart?.last_cart; let i=index">
+                                                <div class="thumb">
+                                                    <a routerLink="/single-product"><img
+                                                            [src]="item?.product_image? item?.product_image:'assets/images/product/sm-img/3.jpg'"
+                                                            alt="product images"></a>
+                                                </div>
+                                                <div class="content">
+                                                    <h6><a routerLink="/single-product">{{item?.product_name}}</a></h6>
+                                                    <span class="prize">₹ {{item?.total_amount |number}}</span>
+                                                    <div class="product_prize d-flex justify-content-between">
+                                                        <span class="qun">Qty: {{item?.quantity |number}}</span>
+                                                        <ul class="d-flex justify-content-end">
+                                                            <li><a routerLink="/cart"><i
+                                                                        class="zmdi zmdi-settings"></i></a></li>
+                                                            <li><a routerLink="/cart"><i
+                                                                        class="zmdi zmdi-delete"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mini_action cart">
+                                        <a class="cart__btn" routerLink="/cart">View and edit cart</a>
+                                    </div>
+                                </div>
+                                <!-- End Shopping Cart -->
+                            </div>
+                        </li>
+                        <li *ngIf="currentUser" class="setting__bar__icon nav-item dropdown mr-4">
+                            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-accout">
+                                <div class="dropdown-header pb-3">
+                                    <div class="media d-user">
+                                        <img class="align-self-center mr-3 w-40 rounded-circle"
+                                            src="assets/images/profile.jpeg" alt="User Name">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-0">{{currentUser?.name}}</h5>
+                                        <span>{{currentUser?.email}}</span>
+                                    </div>
+                                </div>
+                                <a class="dropdown-item" routerLink="/profile">
+                                    <i class="icon dripicons-user"></i> My Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" routerLink="/cart">
+                                    <i class="icon dripicons-article"></i> Go to My Cart
+                                </a>
+                                <a class="dropdown-item" routerLink="/change-password">
+                                    <i class="icon dripicons-lock"></i> Change Password
+                                </a>
+                                <a (click)="logout()" class="dropdown-item">
+                                    <i class="icon dripicons-lock-open"></i> Sign Out
+                                </a>
+                            </div>
+                        </li>
+                        <li *ngIf="!currentUser" class="setting__bar__icon nav-item dropdown mr-4">
+                            <a class="nav-link nav-pill user-avatar" routerLink="/login" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse" id="collapseSearch">
+                    <div class="form-group">
+                        <input type="text" #se (change)="search(se.value)" class="form-control form-control-lg"
+                            placeholder="Search here...">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+</header>

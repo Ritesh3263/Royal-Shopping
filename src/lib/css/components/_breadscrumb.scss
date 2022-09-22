@@ -1,0 +1,211 @@
+/**=====================
+     breadscrumb scss
+==========================**/
+.breadscrumb-section {
+    background-color: light-gray;
+    position: relative;
+    overflow: hidden;
+
+    .breadscrumb-contain {
+        padding: calc(26px + (40 - 26) * ((100vw - 320px) / (1920 - 320))) 0;
+        text-align: center;
+        color: white;
+        font-family: Public Sans;
+        display: flex;
+        align-items: center;
+
+      
+
+        h2 {
+            font-weight: 700;
+            font-size: calc(16px + (22 - 16) * ((100vw - 320px) / (1920 - 320)));
+            margin-bottom: 0;
+
+        }
+
+        .search-box-breadscrumb {
+            position: relative;
+            width: 70%;
+            margin: 0 auto;
+
+         
+
+            input {
+                width: 100%;
+                border: none;
+                border-radius: 6px;
+                font-size: 15px;
+            }
+
+            i {
+               
+                position: absolute;
+                right: calc(14px + (20 - 14) * ((100vw - 320px) / (1920 - 320)));
+                color: white;
+                font-size: calc(15px + (18 - 15) * ((100vw - 320px) / (1920 - 320)));
+            }
+        }
+
+        nav {
+            margin-left: auto;
+
+            [dir="rtl"] & {
+                margin-left: unset;
+                margin-right: auto;
+            }
+
+            .breadcrumb {
+                
+
+                .breadcrumb-item {
+                    font-weight: 500;
+
+                    i {
+                        color: white;
+                    }
+
+                    &.active {
+                        color: black;
+                        margin-top: 2px;
+                    }
+
+                    +.breadcrumb-item {
+                        position: relative;
+
+                        [dir="rtl"] & {
+                            padding-left: 0;
+                            padding-right: 8px;
+                        }
+
+                        &::before {
+                            content: "\f105";
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .breadscrumb-order {
+        display: block;
+
+        .order-box {
+            .order-image {
+               margin: 0 auto calc(16px + (28 - 16) * ((100vw - 320px) / (1920 - 320)));
+
+               
+            }
+
+            .order-contain {
+                h3 {
+                    font-size: calc(21px + (24 - 21) * ((100vw - 320px) / (1920 - 320)));
+                    font-weight: 700;
+                    margin-bottom: 6px;
+                }
+
+                h5 {
+                    margin-bottom: 8px;
+                    line-height: 1.4;
+                }
+            }
+        }
+    }
+}
+
+.faq-breadscrumb {
+    background-color: lightgray;
+    position: relative;
+    overflow: hidden;
+
+    .breadscrumb-contain {
+        padding: calc(26px + (60 - 26) * ((100vw - 320px) / (1920 - 320))) 0;
+        text-align: center;
+        color: white;
+        display: block;
+
+        h2 {
+            font-size: calc(22px + (48 - 22) * ((100vw - 320px) / (1920 - 320)));
+            font-weight: 700;
+            margin-top: -6px;
+        }
+
+        p {
+            margin: calc(11px + (16 - 11) * ((100vw - 320px) / (1920 - 320))) auto 0;
+            color: white;
+            width: 50%;
+            line-height: 1.7;
+            font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+
+          
+
+        
+
+            span {
+                display: inline;
+            }
+        }
+
+        .faq-form-tag {
+            position: relative;
+            margin: calc(18px + (35 - 18) * ((100vw - 320px) / (1920 - 320))) auto 0;
+            width: 50%;
+
+
+            .input-group {
+                background-color: white;
+
+                i {
+                    display: flex;
+                    align-items: center;
+                    padding: 0 calc(12px + (20 - 12) * ((100vw - 320px) / (1920 - 320)));
+                    color: var(--theme-color);
+                    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+                }
+
+                .form-control {
+                    padding-left: 0;
+                    border: none;
+
+                    [dir="rtl"] & {
+                        padding-left: unset;
+                        padding-right: 0;
+                    }
+
+                    &:focus {
+                        background-color: transparent;
+                    }
+                }
+
+                .faq-dropdown-menu {
+                    li {
+                        display: block;
+                    }
+                }
+
+                .faq-dropdown-button {
+                    font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
+                    font-weight: 600;
+                    color: var(--theme-color);
+                    z-index: 0;
+
+                    &::after {
+                        content: unset;
+                    }
+
+                    i {
+                        position: relative;
+                        padding: 0;
+                        margin-left: 5px;
+                        font-size: calc(13px + (14 - 13) * ((100vw - 320px) / (1920 - 320)));
+
+                        [dir="rtl"] & {
+                            margin-left: unset;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

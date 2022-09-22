@@ -1,0 +1,55 @@
+<!-- <ul class="pagination p-3 m-0 justify-content-end" *ngIf="paginationList?.pages && paginationList?.pages.length > 1">
+  <li class="paginate_button page-item previous" [ngClass]="{ disabled : currentPage === 1}">
+    <a (click)="getPage(currentPage - 1)" class="page-link"><i class="fa fa-angle-double-left"></i></a>
+  </li>
+  <li class="paginate_button page-item">
+    <a class="page-link">{{currentPage}} of {{paginationList.totalPages}}</a>
+  </li>
+  <li class="paginate_button page-item next" [ngClass]="{ disabled: currentPage === paginationList.totalPages}">
+    <a (click)="getPage(currentPage + 1)" class="page-link"><i class="fa fa-angle-double-right"></i></a>
+  </li>
+</ul> -->
+
+<!--
+  =====================================
+      || Example: || << 1 of 10  >>
+  =====================================
+-->
+
+
+
+<!-- <ul class="pagination p-3 m-0 justify-content-end" *ngIf="paginationList?.pages && paginationList?.pages.length > 1">
+  <li class="paginate_button page-item previous" id="bs4-table_previous" [ngClass]="{ disabled : currentPage === 1}">
+    <a (click)="getPage(currentPage - 1)" aria-controls="bs4-table" data-dt-idx="0" tabindex="0"
+      class="page-link">Previous</a>
+  </li>
+  <li class="paginate_button page-item" *ngFor="let page of paginationList.pages"
+    [ngClass]="{ active: currentPage === page}">
+    <a (click)="getPage(page)" aria-controls="bs4-table" data-dt-idx="1" tabindex="0" class="page-link">{{page}}</a>
+  </li>
+  <li class="paginate_button page-item next" id="bs4-table_next"
+    [ngClass]="{ disabled: currentPage === paginationList.totalPages}">
+    <a (click)="getPage(currentPage + 1)" aria-controls="bs4-table" data-dt-idx="7" tabindex="0"
+      class="page-link">Next</a>
+  </li>
+</ul> -->
+
+
+<!-- =====================================
+|| Example: || Previous 1 2 3 4 5 7 8 9 10  Next
+===================================== -->
+
+<ul class="wn__pagination" *ngIf="paginationList?.pages && paginationList?.pages.length > 1">
+  <li class="paginate_button page-item previous" id="bs4-table_previous" [ngClass]="{ disabled : currentPage === 1}">
+    <a (click)="getPage(currentPage - 1)" aria-controls="bs4-table" data-dt-idx="0" tabindex="0"
+      class="page-link"><i class="zmdi zmdi-chevron-left"></i></a>
+  </li>
+  <li *ngFor="let page of paginationList.pages"
+  [ngClass]="{ active: currentPage === page}"><a (click)="getPage(page)">{{page}}</a>
+</li>
+  <li class="paginate_button page-item next" id="bs4-table_next"
+    [ngClass]="{ disabled: currentPage === paginationList.totalPages}">
+    <a (click)="getPage(currentPage + 1)" aria-controls="bs4-table" data-dt-idx="7" tabindex="0"
+      class="page-link"><i class="zmdi zmdi-chevron-right"></i></a>
+  </li>
+</ul>

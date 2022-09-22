@@ -1,0 +1,86 @@
+<!-- Start My Account Area -->
+<app-pin (setLoginType)="getLoginType($event)" [currentCompany]="currentCompany" *ngIf="loginType == 'phone'"></app-pin>
+<section *ngIf="loginType == 'email'" class="my_account_area pt--80 pb--55 bg--white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-12">
+        <div class="my__account__wrapper">
+          <h3 class="account__title">Login</h3>
+          <!-- <p class="text-center m-b-20">
+            <a style="color:#399AF2" class="" (click)="changeLoginType('phone')">Login with phone?</a>
+          </p> -->
+          <form class="sign-in-form shadow-lg" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+            <div class="account__form">
+              <div *ngIf="formErrors.apierror" class="alert alert-danger alert-dismissible">
+                <a class="close" (click)="removeError()" data-dismiss="alert" aria-label="close">&times;</a>
+                <span class="h6" [innerHTML]="formErrors.apierror"> </span>
+              </div>
+              <div class="input__box">
+                <label>Email Address <span>*</span></label>
+                <input type="text" class="form-control input-lg" autofocus placeholder="Email ID"
+                  [formControl]="loginForm.controls['email']" />
+
+              </div>
+              <div class="input__box">
+                <div class="form-group">
+                  <label>Password<span>*</span></label>
+                  <input type="password" class="form-control input-lg" placeholder="Password"
+                    [formControl]="loginForm.controls['password']" />
+                </div>
+              </div>
+              <div class="form__btn">
+                <!-- [ngClass]="{'fa fa-spinner fa-spin': showLoader}" -->
+                <button type="submit" [disabled]="showLoader">
+                  Sign In
+                </button>
+
+                <label class="label-for-checkbox">
+                  <input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
+                  <span>Remember me</span>
+                </label>
+              </div>
+              <a class="forget_pass" routerLink="/forgot-password">Lost your password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="my__account__wrapper">
+          <h3 class="account__title">Register</h3>
+          <form [formGroup]="RegisterForm" class="shadow-none" (ngSubmit)="submitRegisterForm()">
+            <div class="account__form">
+              <div *ngIf="formError.apierror" class="alert alert-danger alert-dismissible">
+                <a class="close" (click)="removeError()" data-dismiss="alert" aria-label="close">&times;</a>
+                <span class="h6" [innerHTML]="formError.apierror"> </span>
+              </div>
+              <div class="input__box">
+                <label>Usename <span>*</span></label>
+                <input type="text" class="form-control input-lg" autofocus placeholder="Username"
+                  [formControl]="RegisterForm.controls['name']" />
+              </div>
+              <div class="input__box">
+                <label>Email address <span>*</span></label>
+                <input type="text" class="form-control input-lg" autofocus placeholder="Email ID"
+                  [formControl]="RegisterForm.controls['email']" />
+              </div>
+              <div class="input__box">
+                <label>Password<span>*</span></label>
+                <input type="password" class="form-control input-lg" placeholder="Password"
+                  [formControl]="RegisterForm.controls['password']" />
+              </div>
+              <div class="form__btn">
+                <!-- [ngClass]="{'fa fa-spinner fa-spin': showLoaderr}" -->
+                <button type="submit" [disabled]="showLoaderr">
+                  Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <loder [show]="showLoader"></loder>
+  <loder [show]="showLoaderr"></loder>
+</section>
+<!-- End My Account Area -->

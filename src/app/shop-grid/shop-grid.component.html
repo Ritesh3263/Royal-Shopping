@@ -1,0 +1,321 @@
+<!-- Start Shop Page -->
+<div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
+				<div class="shop__sidebar">
+					<div class="wn__sidebar">
+						<aside class="widget search_widget">
+							<h3 class="widget-title">Search</h3>
+							<div class="form-input">
+								<input type="text" [(ngModel)]="search" (keyup.enter)="searchAction(search)"
+									placeholder="Search...">
+								<button (click)="searchAction(search)"><i class="fa fa-search"></i></button>
+							</div>
+						</aside>
+					</div>
+					<aside class="wedget__categories poroduct--cat">
+						<h3 class="wedget__title">Product Categories</h3>
+						<ul>
+							<li *ngFor="let catitem of catergoryList; let i=index">
+								<a (click)="categoryFiltter(catitem)">{{catitem?.label}}
+									<span>( {{i+1}} )</span>
+								</a>
+							</li>
+						</ul>
+					</aside>
+					<aside class="wedget__categories pro--range">
+						<h3 class="wedget__title">Filter by price</h3>
+						<div class="content-shopby">
+							<div class="price_filter s-filter clear">
+								<form action="#" method="GET">
+									<div id="slider-range"></div>
+									<div class="slider__range--output">
+										<div class="price__output--wrap">
+											<ng5-slider [(value)]="value " [(highValue)]="highValue"
+												[options]="options "></ng5-slider>
+											<div class="price--output">
+												<span>Price :</span> {{value}} - {{highValue}}
+											</div><br>
+											<div class="price--filter">
+												<a (click)="rangeChanged()" class="text-light">Filter</a>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</aside>
+					<aside class="wedget__categories poroduct--tag">
+						<h3 class="wedget__title">Product Brand</h3>
+						<ul>
+							<li *ngFor="let branditem of brandList; let i=index">
+								<a (click)="brandFilter(branditem)">{{branditem?.label}}</a>
+							</li>
+						</ul>
+					</aside>
+					<aside class="wedget__categories sidebar--banner">
+						<img src="assets/images/others/banner_left.jpg" alt="banner images">
+						<div class="text">
+							<h2>new products</h2>
+							<h6>save up to <br> <strong>40%</strong>off</h6>
+						</div>
+					</aside>
+				</div>
+			</div>
+			<div class="col-lg-9 col-12 order-1 order-lg-2">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
+							<div class="shop__list nav justify-content-center" role="tablist">
+								<a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i
+										class="fa fa-th"></i></a>
+								<a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i
+										class="fa fa-list"></i></a>
+							</div>
+							<p>Showing
+								{{showPage?.page_size *(showPage?.current_pages -1 )}} –
+								{{ (showPage?.page_size * showPage?.current_pages) > showPage?.count ? showPage?.count : (showPage?.page_size * showPage?.current_pages)   }}
+								of
+								{{showPage?.count}} results
+
+							</p>
+							<div *ngIf="category_id && category_id?.value" class="orderby__wrapper">
+								<ng-select [items]="categoryBrandList" bindLabel="label" bindValue="value"
+									(change)="onCategoryBrandFilter($event)"
+									placeholder="Sort By {{category_id?.label }}"></ng-select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row pb-3">
+					<div *ngIf="search"
+						class="col m-2 shadow-none rounded alert alert-primary alert-dismissible fade show"
+						role="alert">
+						search : <strong>{{search}}</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span (click)="removeSearch()" aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<div *ngIf="category_id && category_id?.value"
+						class="col m-2 shadow-none rounded alert alert-warning alert-dismissible fade show"
+						role="alert">
+						<strong>{{category_id?.label}}!</strong> You should selected this Category.
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span (click)="removeCategoryFilter()" aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div *ngIf="brand_id && brand_id?.value"
+						class=" col m-2 alert shadow-lg rounded alert-success alert-dismissible fade show" role="alert">
+						<strong>{{brand_id?.label}}!</strong> You should selected this Brand.
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span (click)="removeBrandFilter()" aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<div class="tab__container">
+					<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
+						<div class="row">
+							<!-- Start Single Product -->
+							<div *ngFor="let itemgrid of productList; let i=index"
+								class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
+								<div class="product__thumb">
+									<a class="first__img" [routerLink]="['/shop-grid',itemgrid?.id]"><img
+											[src]=" itemgrid?.image ? itemgrid?.image :'assets/images/books/1.jpg'"
+											alt="product image"></a>
+									<a class="second__img animation1" [routerLink]="['/shop-grid',itemgrid?.id]"><img
+											[src]="itemgrid?.image ? itemgrid?.image :'assets/images/books/2.jpg'"
+											alt="product image"></a>
+									<div class="hot__box" [ngClass]="{'color--2': (i%2)}">
+										<span *ngIf="itemgrid?.brand_id"
+											class="hot-label">{{getjson(itemgrid?.brand_id)?.label}}</span>
+									</div>
+								</div>
+								<div class="product__content content--center">
+									<h4><a [routerLink]="['/shop-grid',itemgrid?.id]">{{itemgrid?.name}}</a></h4>
+									<ul class="prize d-flex">
+										<li>₹ {{itemgrid?.price |number}}</li>
+										<li class="old_prize">₹ {{itemgrid?.price +10 |number}}</li>
+									</ul>
+									<div class="action">
+										<div class="actions_inner">
+											<ul class="add_to_links">
+												<li><a class="cart" (click)="addToCartwithCheck(itemgrid)"><i
+															class="bi bi-shopping-bag4"></i></a></li>
+												<li><a class="wishlist" (click)="addToWishlistwithCheck(itemgrid)"><i
+															class="bi bi-shopping-cart-full"></i></a></li>
+												<li><a class="compare"><i class="bi bi-heart-beat"></i></a>
+												</li>
+												<li><a data-toggle="modal" title="Quick View"
+														class="quickview modal-view detail-link" href="#productmodal"><i
+															class="bi bi-search"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="product__hover--content">
+										<ul class="rating d-flex">
+											<ng-container *ngFor="let qrs of [1,2,3,4,5]">
+												<li [ngClass]="qrs > itemgrid?.rate ? '' : 'on'">
+													<i class="fa fa-star-o"></i>
+												</li>
+											</ng-container>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+							<!-- End Single Product -->
+						</div>
+					</div>
+					<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
+						<div class="list__view__wrapper">
+							<!-- Start Single Product -->
+							<div class="list__view " *ngFor="let itemlist of productList; let ii=index"
+								[ngClass]="{'mt--40': ii!=0}">
+								<div class="thumb">
+									<a class="first__img" [routerLink]="['/shop-grid',itemlist?.id]"><img
+											[src]=" itemlist?.image ? itemlist?.image :'assets/images/product/1.jpg'"
+											alt="product images"></a>
+									<a class="second__img animation1" [routerLink]="['/shop-grid',itemlist?.id]"><img
+											[src]=" itemlist?.image ? itemlist?.image :'assets/images/product/2.jpg'"
+											alt="product images"></a>
+								</div>
+								<div class="content">
+									<h2><a [routerLink]="['/shop-grid',itemlist?.id]">{{itemlist?.name}}</a></h2>
+									<ul class="rating d-flex ">
+										<ng-container *ngFor="let qrs of [1,2,3,4,5]">
+											<li [ngClass]="qrs > itemlist?.rate ? '' : 'on'">
+												<i class="fa fa-star-o"></i>
+											</li>
+										</ng-container>
+									</ul>
+									<ul class="prize__box">
+										<li>₹ {{itemlist?.price | number}}</li>
+										<li class="old__prize">₹ {{itemlist?.price +10 | number}}</li>
+									</ul>
+									<p [innerHTML]="itemlist?.product_info"></p>
+									<ul class="cart__action d-flex">
+										<li class="cart"><a (click)="addToCartwithCheck(itemlist)">Add to cart</a></li>
+										<li class="wishlist"><a (click)="addToWishlistwithCheck(itemlist)"></a></li>
+										<li class="compare"><a routerLink="/cart"></a></li>
+									</ul>
+
+								</div>
+							</div>
+							<!-- End Single Product -->
+
+
+						</div>
+					</div>
+
+					<div *ngIf="productList.length==0" class="card">
+						<div class="card-body">
+							<div class="jumbotron jumbotron-fluid">
+								<div class="container">
+									<h1 class="display-4">No Record Found....!</h1>
+									<p class="lead">Sorry.., But Selectd Options Data Unavailable.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<pagination [paginationList]="pagination" [currentPage]="currentPage"
+						(onPageChange)="getPage($event)">
+					</pagination>
+				</div>
+				<!-- End Shop Page -->
+
+				<!-- QUICKVIEW PRODUCT -->
+				<div id="quickview-wrapper">
+					<!-- Modal -->
+					<div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
+						<div class="modal-dialog modal__container" role="document">
+							<div class="modal-content">
+								<div class="modal-header modal__header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+											aria-hidden="true">&times;</span></button>
+								</div>
+								<div class="modal-body">
+									<div class="modal-product">
+										<!-- Start product images -->
+										<div class="product-images">
+											<div class="main-image images">
+												<img alt="big images" src="assets/images/product/big-img/1.jpg">
+											</div>
+										</div>
+										<!-- end product images -->
+										<div class="product-info">
+											<h1>Simple Fabric Bags</h1>
+
+											<div class="rating__and__review">
+												<ul class="rating">
+													<li><span class="ti-star"></span></li>
+													<li><span class="ti-star"></span></li>
+													<li><span class="ti-star"></span></li>
+													<li><span class="ti-star"></span></li>
+													<li><span class="ti-star"></span></li>
+												</ul>
+												<div class="review">
+													<a href="#">4 customer reviews</a>
+												</div>
+											</div>
+											<div class="price-box-3">
+												<div class="s-price-box">
+													<span class="new-price">₹ 17.20</span>
+													<span class="old-price">₹ 45.00</span>
+												</div>
+											</div>
+											<div class="quick-desc">
+												Designed for simplicity and made from high quality materials. Its sleek
+												geometry and material combinations creates a modern look.
+											</div>
+											<div class="select__color">
+												<h2>Select color</h2>
+												<ul class="color__list">
+													<li class="red"><a title="Red" href="#">Red</a></li>
+													<li class="gold"><a title="Gold" href="#">Gold</a></li>
+													<li class="orange"><a title="Orange" href="#">Orange</a></li>
+													<li class="orange"><a title="Orange" href="#">Orange</a></li>
+												</ul>
+											</div>
+											<div class="select__size">
+												<h2>Select size</h2>
+												<ul class="color__list">
+													<li class="l__size"><a title="L" href="#">L</a></li>
+													<li class="m__size"><a title="M" href="#">M</a></li>
+													<li class="s__size"><a title="S" href="#">S</a></li>
+													<li class="xl__size"><a title="XL" href="#">XL</a></li>
+													<li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
+												</ul>
+											</div>
+											<div class="social-sharing">
+												<div class="widget widget_socialsharing_widget">
+													<h3 class="widget-title-modal">Share this product</h3>
+													<ul class="social__net social__net--2 d-flex justify-content-start">
+														<li class="facebook"><a href="#" class="rss social-icon"><i
+																	class="zmdi zmdi-rss"></i></a></li>
+														<li class="linkedin"><a href="#" class="linkedin social-icon"><i
+																	class="zmdi zmdi-linkedin"></i></a></li>
+														<li class="pinterest"><a href="#"
+																class="pinterest social-icon"><i
+																	class="zmdi zmdi-pinterest"></i></a></li>
+														<li class="tumblr"><a href="#" class="tumblr social-icon"><i
+																	class="zmdi zmdi-tumblr"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="addtocart-btn">
+												<a href="#">Add to cart</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END QUICKVIEW PRODUCT -->
+
+				<loder [show]="loadingState"></loder>

@@ -1,0 +1,118 @@
+/**=====================
+     timer scss
+==========================**/
+.timer {
+    ul {
+        display: flex;
+        align-items: center;
+
+        [dir="rtl"] & {
+            padding-left: unset;
+            padding-right: 0;
+        }
+
+   
+
+        li {
+            
+            
+            position: relative;
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+
+           
+
+            +li {
+                margin-left: 15px;
+
+                [dir="rtl"] & {
+                    margin-left: unset;
+                    margin-right: 15px;
+                }
+
+                &::after {
+                  
+                    font-weight: bolder;
+                    left: -10px;
+
+                    [dir="rtl"] & {
+                        left: unset;
+                        right: -10px;
+                    }
+                }
+            }
+
+            .counter {
+                h4 {
+                    font-weight: 500;
+
+                  
+                }
+            }
+        }
+    }
+}
+
+.timer-2 {
+    margin-left: 40px;
+
+  
+
+    ul {
+        li {
+            color: black;
+            border: 1px solid white;
+            background-color: transparent;
+
+            &.bg-color {
+                background-color: var(--theme-color);
+                color: white;
+            }
+
+            +li {
+                &::after {
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.timer-box {
+    ul {
+        display: flex;
+        align-items: center;
+
+       
+
+        li {
+            
+            
+            position: relative;
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+
+          
+
+            +li {
+                margin-left: 15px;
+
+                &::after {
+                   font-weight: bolder;
+                   
+                    left: -10px;
+                }
+            }
+
+            .counter {
+                h4 {
+                    font-weight: 500;
+
+                   
+                }
+            }
+        }
+    }
+}

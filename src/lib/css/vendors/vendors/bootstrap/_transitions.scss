@@ -1,0 +1,25 @@
+.fade {
+
+  &:not(.show) {
+    opacity: 0;
+  }
+}
+
+// scss-docs-start collapse-classes
+.collapse {
+  &:not(.show) {
+    display: none;
+  }
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+
+  &.collapse-horizontal {
+    width: 0;
+    height: auto;
+  }
+}
+
+// scss-docs-end collapse-classes

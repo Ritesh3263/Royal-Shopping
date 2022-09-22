@@ -1,0 +1,58 @@
+<!-- cart-main-area start -->
+<div class="wishlist-area section-padding--lg bg__white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="wishlist-content">
+          <form action="#">
+            <div class="wishlist-table wnro__table table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="product-remove"></th>
+                    <th class="product-thumbnail"></th>
+                    <th class="product-name"><span class="nobr">Product Name</span></th>
+                    <th class="product-price"><span class="nobr"> Unit Price </span></th>
+                    <th class="product-stock-stauts"><span class="nobr"> Stock Status </span></th>
+                    <th class="product-add-to-cart"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of objectArray">
+                    <td class="product-remove"><a (click)="deleteObject(item)">×</a></td>
+                    <td class="product-thumbnail">
+                      <a target="_blank"
+                        [href]="item?.product_image?item?.product_image:'assets/images/product/sm-3/1.jpg'"><img
+                          [src]="item?.product_image?item?.product_image:'assets/images/product/sm-3/1.jpg'"
+                          style="width:80px;height:100px;" alt="product img"></a>
+                    </td>
+                    <td class="product-name">{{item?.product_name}}</td>
+                    <td class="product-price"><span class="amount">₹ {{item?.price}}</span></td>
+                    <td class="product-stock-status">
+                      <span *ngIf="item?.is_active" class="wishlist-in-stock">In Stock</span>
+                      <span *ngIf="!(item?.is_active)" class="wishlist-out-stock">Out of Stock</span>
+                    </td>
+                    <td class="product-add-to-cart">
+                      <a *ngIf="(item?.is_active)" (click)="addToCartwithCheck(item)" class="btn"> Add to Cart</a>
+                      <button *ngIf="!(item?.is_active)" class="btn" disabled="disabled">Not Add to Cart</button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="objectArray.length==0">
+                    <td colspan="6">
+                      <h4>No Record Found</h4>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination class="m-5" [paginationList]="pagination" [currentPage]="currentPage"
+                (onPageChange)="getPage($event)">
+              </pagination>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cart-main-area end -->
+<loder [show]="loadingState"></loder>

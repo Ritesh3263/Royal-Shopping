@@ -1,0 +1,64 @@
+<!-- Start My Account Area -->
+<section class="my_account_area pt--80 pb--55 bg--white">
+    <div class="container">
+      <div class="row" *ngIf="loginPinType == 1">
+        <div class="col-lg-6 col-12">
+          <div class="my__account__wrapper">
+            <h3 class="account__title">Login (get mobile no)</h3>
+            <p class="text-center text-muted">Hi! Please enter your login information below to send submissions as contacts.</p>
+                <p class="text-center m-b-20">
+                    <a style="color:#399AF2" class="" (click)="changeLoginType('email')">Login with email?</a>
+                </p>
+            <form class="sign-in-form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+              <div class="account__form">
+                <div class="input__box">
+                  <label>Phone Number <span>*</span></label>
+                  <div class="form-group">
+                    <div class="input-group" [ngClass]="{'has-error': formErrors.phone_number}">
+                        <span class="input-group-addon">{{currentCompany?.dial_code ?currentCompany?.dial_code :'+91'}}</span>
+                        <input number type="text" class="form-control" [formControl]="loginForm.controls['phone_number']" placeholder="Enter Phone Number" />
+                    </div>
+                    <span *ngIf="formErrors.phone_number" class="help-block" [innerHTML]="formErrors.phone_number"></span>
+                </div>
+                </div>
+                <div class="form__btn">
+                  <button [ngClass]="{'qt-loader qt-loader-mini qt-loader-left': showLoader}" [disabled]="showLoader">Sign In</button>
+                  <label class="label-for-checkbox">
+                    <input id="rememberme" class="input-checkbox" name="rememberme" value="forever" type="checkbox">
+                    <span>Remember me</span>
+                  </label>
+                </div>
+                <a class="forget_pass" routerLink="/forgot-password">Lost your password?</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="loginPinType == 2">
+        <div class="col-lg-6 col-12">
+          <div class="my__account__wrapper">
+            <h3 class="account__title">Verify otp</h3>
+            <form [formGroup]="otpForm" (ngSubmit)="submitOtpForm()">
+              <div class="account__form">
+                <div class="input__box">
+                  <label>Enter OTP <span>*</span></label>
+                  <input type="text">
+                </div>
+                <div class="form__btn">
+                  <button type="submit" [ngClass]="{'qt-loader qt-loader-mini qt-loader-left': showLoader}" [disabled]="showLoader"> Sign In</button>
+                  <div class="checkbox m-b-10 m-t-20 ">
+                    <a (click)="resendOTP()" class="float-right m-b-20">Resend OTP?</a>
+                </div>
+                </div>
+                <a class="forget_pass" routerLink="/forgot-password">Lost your password?</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <!-- End My Account Area -->
+  

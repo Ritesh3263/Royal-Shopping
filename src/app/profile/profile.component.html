@@ -1,0 +1,79 @@
+<div class="content">
+    <header class="page-header">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h1>My Profile</h1>
+            </div>
+            <div class="m-l-10">
+                <button type="button" [routerLink]="['edit']" class="btn btn-outline-primary">Edit Profile</button>
+            </div>
+        </div>
+    </header>
+    <section class="page-content container-fluid">
+        <div class="card m-3 strache-card">
+            <div class="card-body">
+                <div class="media d-user align-items-center">
+                    <img [src]="currentUserDetail?.image ? currentUserDetail?.image : 'assets/images/profile.jpeg'"
+                        [alt]="currentUserDetail?.image ? currentUserDetail?.full_name : 'No Image'"
+                        class="mr-5 ml-3 rounded-circle img-thumbnail o-cover" style="width: 230px; height: 230px;">
+                    <div class="media-body">
+                        <div class="row">
+                            <div class="col-lg-12  col-xl-10">
+                                <h2 class="mt-3 mb-3 text-primary">{{currentUserDetail?.name}}</h2>
+                                <ul class="list-unstyled text-left row mb-0">
+                                    <li *ngIf="currentUserDetail?.first_name" class="mb-3 col-md-6"><label
+                                            class="text-muted mb-1">First Name</label><br>
+                                        {{currentUserDetail?.first_name}}
+                                    </li>
+                                    <li *ngIf="currentUserDetail?.last_name" class="mb-3 col-md-6"><label
+                                            class="text-muted mb-1">Last Name</label><br>
+                                        {{currentUserDetail?.last_name}}
+                                    </li>
+                                    <li *ngIf="currentUserDetail?.phone_number" class="mb-3 col-md-6"><label
+                                            class="text-muted mb-1">Phone Number</label><br>
+                                        {{ currentUserDetail?.phone_number}}</li>
+                                    <li *ngIf="currentUserDetail?.email" class="mb-3 col-md-6"><label
+                                            class="text-muted mb-1">Email</label><br>
+                                        {{currentUserDetail?.email}}
+                                    </li>
+
+                                    <ng-container *ngIf="currentUserAddressDetail">
+                                        <li *ngIf="currentUserAddressDetail?.state" class="mb-3 col-md-6"><label
+                                                class="text-muted mb-1">Region</label><br>
+                                            {{currentUserAddressDetail?.state}} <span
+                                                *ngIf="currentUserAddressDetail?.country">-
+                                                {{currentUserAddressDetail?.country}}</span>
+                                        </li>
+                                        <li *ngIf="currentUserAddressDetail?.district" class="mb-3 col-md-6"><label
+                                                class="text-muted mb-1">District</label><br>
+                                            {{currentUserAddressDetail?.district }}</li>
+                                        <li *ngIf="currentUserAddressDetail?.taluk" class="mb-3 col-md-6"><label
+                                                class="text-muted mb-1">Taluk</label><br>
+                                            {{currentUserAddressDetail?.taluk }}</li>
+                                        <li *ngIf="currentUserAddressDetail?.city" class="mb-3 col-md-6"><label
+                                                class="text-muted mb-1">City</label><br>
+                                            {{currentUserAddressDetail?.city }}</li>
+                                        <li *ngIf="currentUserAddressDetail?.pincode" class="mb-3 col-md-6"><label
+                                                class="text-muted mb-1">Postal Code</label><br>
+                                            {{currentUserAddressDetail?.pincode}}
+                                        </li>
+                                        <li *ngIf="currentUserAddressDetail?.phone_number" class="mb-3 col-md-6"><label
+                                                class="text-muted mb-1">Contact
+                                                Number</label><br>
+                                            {{currentUserAddressDetail?.dial_code}}
+                                            {{currentUserAddressDetail?.phone_number}}
+                                        </li>
+                                        <li *ngIf="currentUserAddressDetail?.street_address" class="mb-3 col-md-12">
+                                            <label class="text-muted mb-1">Address</label><br>
+                                            {{currentUserAddressDetail?.street_address}}
+                                        </li>
+                                    </ng-container>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

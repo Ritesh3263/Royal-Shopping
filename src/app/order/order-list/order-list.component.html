@@ -1,0 +1,87 @@
+<!-- cart-main-area start -->
+<div class="wishlist-area section-padding--lg bg__white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="wishlist-content">
+          <div class="wishlist-table wnro__table table-responsive">
+            <div class="accordion" id="accordionExample">
+              <div class="card" *ngFor="let orditem of orderNoArray;let i=index;">
+                <div class="card-header" id="headingOne">
+                  <h2 class="mb-0">
+                    <div class="row">
+                      <div class="col order-first">
+                        <a class="btn btn-link" type="button" data-toggle="collapse" href="#{{orditem}}"
+                          aria-expanded="true" aria-controls="collapseOne">
+                          Order No : {{orditem}}
+                        </a>
+                      </div>
+                      <div class="col order-last text-right">
+                        <span>{{orderTotal(orditem)}}</span>
+                      </div>
+                    </div>
+                  </h2>
+                </div>
+                <div id="{{orditem}}" class="collapse" [ngClass]="{'show': i==0}" aria-labelledby="headingOne"
+                  data-parent="#accordionExample">
+                  <div class="card-body">
+                    <table class="table">
+                      <caption>
+                        List of Product Of this Order No : {{orditem}}
+                        <br>Total Amount: {{orderTotal(orditem)}}
+                        <br> <input class="btn btn-outline-success btn-rounded" (click)="printDiv(orditem)"
+                          type="button" value="Print">
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Product</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Total Amount</th>
+                          <th scope="col">Status</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let ite of objectArray; let j=index;">
+                          <ng-container *ngIf="ite?.order_number == orditem">
+                            <tr>
+                              <th scope="row">{{j+1}}</th>
+                              <td>
+                                <img class="rounded" style="height:60px;width:50px;"
+                                  [src]="ite?.product_image?ite?.product_image:'assets/images/product/sm-3/1.jpg'">
+                              </td>
+                              <td>{{ite?.product_name}}</td>
+                              <td>{{ite?.price}}</td>
+                              <td>{{ite?.quantity}}</td>
+                              <td>{{ite?.total_amount}}</td>
+                              <td>
+                                <h3><span class="badge badge-primary">{{ite?.order_status?.value}}</span>
+                                </h3>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <pagination class="m-5" [paginationList]="pagination" [currentPage]="currentPage"
+              (onPageChange)="getPage($event)">
+            </pagination>
+          </div>
+
+        </div>
+        <div *ngIf="objectArray.length == 0" class="taxt-center h2" style="color: #b6c8dbc9;">
+          No Order Found
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cart-main-area end -->
+<loder [show]="loadingState"></loder>

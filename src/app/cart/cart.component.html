@@ -1,0 +1,82 @@
+<!-- cart-main-area start -->
+<div class="cart-main-area section-padding--lg bg--white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 ol-lg-12">
+        <form action="#">
+          <div class="table-content wnro__table table-responsive">
+            <table>
+              <thead>
+                <tr class="title-top">
+                  <th class="product-thumbnail">Image</th>
+                  <th class="product-name">Product</th>
+                  <th class="product-price">Price</th>
+                  <th class="product-quantity">Quantity</th>
+                  <th class="product-subtotal">Total</th>
+                  <th class="product-remove">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of objectArray; let i=index">
+                  <td class="product-thumbnail">
+                    <a target="_blank"
+                      [href]="item?.product_image?item?.product_image:'assets/images/product/sm-3/1.jpg'"><img
+                        [src]="item?.product_image?item?.product_image:'assets/images/product/sm-3/1.jpg'"
+                        style="width:80px;height:100px;" alt="product img"></a>
+                  </td>
+                  <td class="product-name">{{item.product_name}}</td>
+                  <td class="product-price"><span class="amount">₹ {{item.price}}</span></td>
+                  <td class="product-quantity"><input number min="1" max="25" (change)="productQuantity($event,item)"
+                      type="number" value="{{item?.quantity}}"></td>
+                  <td class="product-subtotal">₹ {{item.total_amount}}</td>
+                  <td class="product-remove"><a (click)="deleteObject(item)">X</a></td>
+                </tr>
+                <tr *ngIf="objectArray.length==0">
+                  <td colspan="6">
+                    <h4>No Record Found</h4>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination class="m-5" [paginationList]="pagination" [currentPage]="currentPage"
+              (onPageChange)="getPage($event)">
+            </pagination>
+          </div>
+        </form>
+
+        <div class="cartbox__btn">
+          <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+            <li [routerLink]="['/checkout']"><a>Coupon Code</a></li>
+            <li [routerLink]="['/checkout']"><a>Apply Code</a></li>
+            <li><a>Update Cart</a></li>
+            <li><a style="background-color: #f0680c; color: white;" [routerLink]="['/checkout']">Check Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6">
+        <div class="cartbox__total__area">
+          <div class="cartbox-total d-flex justify-content-between">
+            <ul class="cart__total__list">
+              <li>Cart total</li>
+              <!-- <li>Sub Total</li> -->
+            </ul>
+            <ul class="cart__total__tk">
+              <li>₹ {{total_amount}}</li>
+              <!-- <li>$70</li> -->
+            </ul>
+          </div>
+          <div class="cart__total__amount">
+            <span>Grand Total</span>
+            <span>₹ {{total_amount}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- cart-main-area end -->
+<loder [show]="loadingState"></loder>

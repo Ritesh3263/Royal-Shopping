@@ -1,0 +1,48 @@
+<!-- Start Portfolio Area -->
+<section class="wn__portfolio__area gallery__masonry__activation bg--white mt--40 pb--100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="gallery__menu">
+          <button (click)="removeFilterData()" class="is-checked">Filter - All</button>
+          <ng-container *ngFor="let catitem of catergoryList">
+            <button (click)="getFilterData(catitem?.value)">{{catitem?.label}}</button>
+          </ng-container>
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row masonry__wrap">
+      <!-- Start Single Portfolio -->
+      <div *ngFor="let branditem of brandList" class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--1">
+        <div class="portfolio">
+          <div class="thumb">
+            <a [routerLink]="['/shop-grid', {b_n:branditem?.name,b_:branditem.id}]"
+              routerLinkActive="router-link-active">
+              <img [src]="branditem?.image ? branditem?.image :'assets/images/portfolio/md-img/1.jpg'"
+                alt="portfolio images">
+            </a>
+            <div class="search">
+              <a [href]="branditem?.image ? branditem?.image :'assets/images/portfolio/md-img/1.jpg'"
+                data-lightbox="grportimg" data-title="My caption"><i class="zmdi zmdi-search"></i></a>
+            </div>
+            <div class="link">
+              <a [routerLink]="['/shop-grid', {b_n:branditem?.name,b_:branditem.id}]"
+                routerLinkActive="router-link-active"><i class="fa fa-link"></i></a>
+            </div>
+          </div>
+          <div class="content">
+            <h6><a [routerLink]="['/shop-grid', {b_n:branditem?.name,b_:branditem.id}]"
+                routerLinkActive="router-link-active">{{branditem?.name}}</a></h6>
+            <p>{{branditem?.brand_sub_text}}</p>
+            <a target="_blank" href="{{branditem.brand_url}}">{{branditem?.brand_url}}</a>
+          </div>
+        </div>
+      </div>
+      <!-- End Single Portfolio -->
+    </div>
+  </div>
+</section>
+<!-- End Portfolio Area -->
