@@ -38,7 +38,8 @@
               "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "./src/lib/css/slick/slick.css"
             ],
             "scripts": [
               "./src/lib/js/bootstrap/bootstrap-notify.min.js",
@@ -65,7 +66,7 @@
               "./src/lib/js/theme-setting.js",
               "./src/lib/js/timer.js",
               "./src/lib/js/wow.min.js",
-
+              "./src/lib/css/slick/slick.min.js",
 
               
               "node_modules/jquery/dist/jquery.js",

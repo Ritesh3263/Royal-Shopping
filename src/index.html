@@ -22,22 +22,59 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#f0680c">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-      <!-- Iconly css -->
-      <!-- <link  href="../src/lib/css/bulk-style.css"> -->
+  <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <!-- Iconly css -->
+    <link  href="../src/lib/css/bulk-style.css">
       
-    <!-- feather icon css -->
-    <!-- <link  type="text/css" href="../src/lib/css/vendors/feather-icon.css"> -->
+  <!-- feather icon css -->
+    <link  type="text/css" href="../src/lib/css/vendors/feather-icon.css">
+    <link href="https://dev.iconly.io/public/WyZ3QNhdbgKm/iconly.css" rel="stylesheet"/>
+
+  <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css"/>
+    <linkrel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css"/>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+    <link rel="stylesheet" type="text/css" href="src/lib/css/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="src/lib/css/slick/slick-theme.css">
+
+  <!-- slick css -->
+  <!-- Glider css -->
+  <link rel="stylesheet" type="text/css" href="lib/css/glider/glider.min.css">
+  <!-- Glider css -->
 
 </head>
 
-<body>
+<body class="bg-effect">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
+  
   <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+  <!-- Slick js-->
+  <script src="../assets/js/slick/slick.js"></script>
+  <script src="../assets/js/slick/custom_slick.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="src/lib/css/slick/slick.min.js"></script>
+
+  <script type="text/javascript" src="lib/js/glider.min.js"></script>
+  <script>
+    window.addEventListener('load', function(){
+      new Glider(document.querySelector('.glider'),{
+        slidesToShow:1,
+        draggable:true,
+        
+      })
+  })
+  </script>
+
 </body>
 
 </html>

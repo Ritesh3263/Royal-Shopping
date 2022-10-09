@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../service/general.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import * as feather from 'feather-icons';
+
 
 declare var $: any;
 @Component({
@@ -109,6 +111,10 @@ export class HomeComponent implements OnInit {
         this.formErrors.semail = null
       }, 5000);
     }
+  }
+
+  ngAfterViewInit() {
+    feather.replace();
   }
 
 }

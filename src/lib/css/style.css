@@ -7665,7 +7665,8 @@ header .top-nav .navbar-top .middle-box .search-box .input-group ::placeholder {
 header .top-nav .navbar-top .middle-box .search-box .input-group .form-control {
     width: 577px;
     border-radius: 5px 0 0 5px;
-    border-color: #ececec
+    border-color: #ececec;
+    height: auto;
 }
 
 [dir="rtl"] header .top-nav .navbar-top .middle-box .search-box .input-group .form-control {
@@ -12048,9 +12049,10 @@ header .header-nav .header-nav-right .deal-button span {
 }
 
 .bg-effect {
-    background-image: url(^assets/images/bg-body.png);
+    background-image: url('../../assets/images/bg-body.png');
     background-repeat: no-repeat;
-    background-position: center
+    background-position: center;
+    background-size: contain;
 }
 
 .home-contain {
@@ -14675,7 +14677,7 @@ header .offcanvas-backdrop {
 .product-border {
     border: 1px solid rgba(74, 85, 104, 0.3);
     border-radius: 10px;
-    padding: 0 14px
+    padding: 0
 }
 
 .product-border.border-row .slick-slider .slick-list {
@@ -14683,7 +14685,7 @@ header .offcanvas-backdrop {
 }
 
 .product-border.border-row .row>div:last-child {
-    border-top: 1px solid #ddd
+    border-top: 1px solid #ddd !important;
 }
 
 .product-border .slider-5-1 .slick-slide>.row {
@@ -14725,7 +14727,9 @@ header .offcanvas-backdrop {
     position: relative;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    overflow: hidden
+    overflow: hidden;
+    border-bottom: 1px solid rgba(74, 85, 104, 0.3);
+    
 }
 
 .product-box:hover .product-image a img {
@@ -25114,3 +25118,134 @@ header .offcanvas-backdrop {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* CSS added by Ritesh */
+
+.width-100{
+    width: 100%;
+}
+
+.product-wraper-5{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: -webkit-fill-available;
+    grid-gap: 25px;
+}
+
+.list-wraper-4{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: -webkit-fill-available;
+    grid-gap: 25px;
+}
+
+.product-wraper-3{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: -webkit-fill-available;
+    grid-gap: 25px;
+}
+
+.product-wraper-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+}
+
+.product-wraper-1{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;  
+
+}
+
+.product-border.border-row .row>div:last-child {
+    border-top: 1px solid #ddd !important;
+}
+
+.discount-banner{
+    background-image: url("../../assets/images/veg-2/banner/3.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.banner-1, .banner-2{
+    width: 100%;
+}
+
+.width-available{
+    width: -webkit-fill-available;
+}
+
+.card-width-sq{
+    width: -webkit-fill-available;
+}
+
+.banner-contain{
+    background-image: url("/assets/images/vegetable/banner/15.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+/* .border-right-none{
+    border-right: none;
+} */
+
+.card-slider{
+    overflow-x: scroll;
+}
+
+@media (max-width: 1200px) {
+    .product-wraper-1{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .product-wraper-2{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .product-wraper-3{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .list-wraper-4{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-wraper-5{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .product-wraper-1{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-wraper-1{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-wraper-2{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-wraper-3{
+        grid-template-columns: 1fr;
+    }
+
+    .list-wraper-4{
+        grid-template-columns: 1fr;
+    }
+
+    .product-wraper-5{
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* CSS added by Ritesh */

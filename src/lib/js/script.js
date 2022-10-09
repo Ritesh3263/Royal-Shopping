@@ -33,6 +33,8 @@
 // 23. remove notication bar js
 // 24. category box js
 
+
+
 (function($) {
     "use strict";
     /*=====================
@@ -438,3 +440,4 @@ if (contentwidth < "767") {
     });
     $(".accordion-box").hide();
 }
+

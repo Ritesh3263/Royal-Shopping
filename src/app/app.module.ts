@@ -15,6 +15,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriesComponent } from './categories/categories.component';
+import * as feather from 'feather-icons';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { CategoriesComponent } from './categories/categories.component';
     BrowserAnimationsModule, // required animations 
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgbModule // ToastrModule added
+    NgbModule, // ToastrModule added
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -40,4 +41,8 @@ import { CategoriesComponent } from './categories/categories.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  ngAfterViewInit() {
+    feather.replace();
+  }
+ }
